@@ -19,7 +19,7 @@ public class ParkManager extends User {
 	 */
 	public ParkManager() {
 		super();
-		parks = new TreeSet<>();
+		parks = new TreeSet<Park>();
 	}
 	
 	/**
@@ -31,7 +31,7 @@ public class ParkManager extends User {
 	 */
 	public ParkManager(String firstName, String lastName, String emailAddress) {
 		super(firstName, lastName, emailAddress);
-		parks = new TreeSet<>();
+		parks = new TreeSet<Park>();
 	}
 
 	/**
