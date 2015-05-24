@@ -8,6 +8,8 @@ import org.junit.Test;
 
 /**
  * AdministratorTest is a JUnit test class for testing the Administrator class.
+ * 
+ * @author Ankit
  */
 public class AdministratorTest {
 	

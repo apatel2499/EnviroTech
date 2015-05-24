@@ -2,6 +2,8 @@ package model;
 
 /**
  * The concrete implementation for an Administrator.
+ * 
+ * @author Ankit
  */
 public class Administrator extends User {
 

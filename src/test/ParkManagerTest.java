@@ -11,6 +11,8 @@ import org.junit.Test;
 
 /**
  * ParkManagerTest is a JUnit test class for testing the ParkManager class.
+ * 
+ * @author Ankit
  */
 public class ParkManagerTest {
 	
