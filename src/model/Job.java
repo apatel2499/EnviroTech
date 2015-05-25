@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.TreeSet;
 
+/** Author: Leda Rezanejad **/
 
 /**
 * Job represents a job for a park.
