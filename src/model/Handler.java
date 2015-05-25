@@ -74,12 +74,7 @@ public class Handler implements Serializable {
 	 * @return all jobs in the system
 	 */
 	public TreeSet<Job> getAllJobs() {
-		// allJobs = new empty TreeSet of Jobs
-		// For all park managers:
-		// For all parks:
-		// For all jobs:
-		// Add job to allJobs
-		// return allJobs
+		
 		TreeSet<Job> allJobs = new TreeSet<Job>();
 
 		// for every park manager
@@ -105,11 +100,7 @@ public class Handler implements Serializable {
 	 * @return all upcoming jobs in the system
 	 */
 	public TreeSet<Job> getUpcomingJobs() {
-		// upcomingJobs = new empty TreeSet of Jobs
-		// For all jobs in getAllJobs():
-		// If job hasn't started yet:
-		// Add job to upcomingJobs
-		// return upcomingJobs
+
 		TreeSet<Job> upcomingJobs = new TreeSet<Job>();
 
 		// for every job in getAllJobs()
@@ -154,16 +145,6 @@ public class Handler implements Serializable {
 	 *         added, false otherwise
 	 */
 	public boolean isJobScheduleAvailable(Date startDate, Date endDate) {
-		// countJobsBefore = 0
-		// countJobsAfter = 0
-		// For all jobs in getAllJobs():
-		// If end date of job is within 3 days before/on start date:
-		// Increment countJobsBefore
-		// Else If end date of job is within 3 days after/on end date:
-		// Increment countJobsAfter
-		// return countJobsBefore + countJobsAfter < 5
-
-		// NOTE: not sure about the pseudocode, verify this
 
 		// creates a boundary of 3 days away from the current date
 		Date leftBound = new Date(startDate.getTime() - THREEDAYS);
@@ -196,12 +177,10 @@ public class Handler implements Serializable {
 	 * @return the set volunteers with the given last name
 	 */
 	public TreeSet<Volunteer> getVolunteersByLastName(String lastName) {
-		// foundVolunteers = new empty TreeSet of Volunteers
-		// For all volunteers:
-		// If volunteer's last name is equal to given last name:
-		// Add volunteer to foundVolunteers
-		// return foundVolunteers
+
 		TreeSet<Volunteer> foundVolunteer = new TreeSet<Volunteer>();
+		// for all volunteers in the map, look for a last name match
+		// then add it to foundVolunteer
 		for (String email : volunteers.keySet()) {
 			Volunteer tempVolunteer = volunteers.get(email);
 			if (tempVolunteer.getLastName().equals(lastName))
@@ -219,14 +198,7 @@ public class Handler implements Serializable {
 	 * @return the user with the given email address
 	 */
 	public User getUserByEmail(String email) {
-		// If email in administrators:
-		// Return administrators.get(email)
-		// Else If email in parkManagers:
-		// Return parkManagers.get(email)
-		// Else If email in volunteers:
-		// Return volunteers.get(email)
-		// Else:
-		// Return null
+
 		if (administrators.containsKey(email))
 			return administrators.get(email);
 		else if (parkManagers.containsKey(email))
