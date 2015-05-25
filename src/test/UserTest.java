@@ -1,4 +1,8 @@
+package test;
+
 import static org.junit.Assert.*;
+import model.User;
+import model.Volunteer;
 
 import org.junit.Test;
 

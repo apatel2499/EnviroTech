@@ -17,6 +17,11 @@ import java.util.TreeSet;
 
 public class Handler implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 22764371777244455L;
+
 	/** The administrators mapped to their email addresses. */
 	private Map<String, Administrator> administrators;
 

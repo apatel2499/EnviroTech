@@ -1,6 +1,9 @@
 package com.swd.project;
 
 import static org.junit.Assert.*;
+import model.Administrator;
+import model.ParkManager;
+import model.Volunteer;
 
 import org.junit.Before;
 import org.junit.Test;

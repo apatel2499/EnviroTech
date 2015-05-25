@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
+import model.Park;
+import model.ParkManager;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,7 +48,7 @@ public class ParkManagerTest {
 		testParkManager = new ParkManager(testFirstName, testLastName, testEmailAddress);
 		
 		// set and populate the list of sample parks
-		testSampleParks = new ArrayList<>();
+		testSampleParks = new ArrayList<Park>();
 		for (int i = 0; i < 3; i++) {
 			Park samplePark = new Park(i, "Park " + i, testParkManager);
 			testSampleParks.add(samplePark);

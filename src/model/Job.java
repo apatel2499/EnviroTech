@@ -12,7 +12,12 @@ import java.util.TreeSet;
 
 public class Job implements Serializable, Comparable<Job> {
 
-        private static final int MAX_ALLOWED_STARTDATE = 90;
+        /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7064485507053168372L;
+
+		private static final int MAX_ALLOWED_STARTDATE = 90;
 
         /** The job id. */
         private int jobId;

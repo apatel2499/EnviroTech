@@ -8,6 +8,11 @@ import java.util.TreeSet;
 
 public class Park implements Serializable, Comparable<Park> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8854178141608024195L;
+
 	/** The park id. */
 	private int parkId;
 
