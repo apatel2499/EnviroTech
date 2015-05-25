@@ -92,8 +92,8 @@ public class Park implements Serializable, Comparable<Park> {
 	 */
 	public boolean addJob(Job job) {
 		// return the result of adding the job to the set of jobs
-
-		jobs.add(job);
+		if (jobs.add(job))
+			return true;
 
 		return false;
 	}
