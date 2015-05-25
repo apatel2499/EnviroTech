@@ -7,6 +7,14 @@ import static org.junit.Assert.fail;
 
 import java.util.Date;
 
+import model.Administrator;
+import model.Handler;
+import model.Job;
+import model.Park;
+import model.ParkManager;
+import model.User;
+import model.Volunteer;
+
 import org.junit.Before;
 import org.junit.Test;
 

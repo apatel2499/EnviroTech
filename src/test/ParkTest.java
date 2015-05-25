@@ -1,8 +1,14 @@
-package com.swd.project;
+package test;
+
 
 import static org.junit.Assert.*;
+
 import java.util.Date;
 import java.util.TreeSet;
+
+import model.Job;
+import model.Park;
+import model.ParkManager;
 
 import org.junit.Before;
 import org.junit.Test;

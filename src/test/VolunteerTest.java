@@ -1,6 +1,13 @@
+package test;
+
 import static org.junit.Assert.*;
 
 import java.util.Date;
+
+import model.Job;
+import model.Park;
+import model.ParkManager;
+import model.Volunteer;
 
 import org.junit.Test;
 
