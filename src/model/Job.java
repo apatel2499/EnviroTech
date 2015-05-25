@@ -147,6 +147,33 @@ public class Job implements Serializable, Comparable<Job> {
                 return jobEndDate;
         }
 
+         /**
+	 * Gets all light volunteers
+	 * 
+	 * @return the tree set of light volunteers
+	 */
+	public TreeSet<Volunteer> getLightVolunteers() {
+		return lightVolunteers;
+	}
+
+	/**
+	 * Gets all medium volunteers
+	 * 
+	 * @return the tree set of medium volunteers
+	 */
+	public TreeSet<Volunteer> getMediumVolunteers() {
+		return mediumVolunteers;
+	}
+
+	/**
+	 * Gets all heavy volunteers 
+	 * 
+	 * @return the tree set of heavy volunteers
+	 */
+	public TreeSet<Volunteer> getHeavyVolunteers() {
+		return heavyVolunteers;
+	}
+
         /**
          * Gets the maximum number light volunteers.
          *
