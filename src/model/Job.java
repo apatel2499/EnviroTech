@@ -52,13 +52,15 @@ public class Job implements Serializable, Comparable<Job> {
         /**
          * Instantiates a new job.
          */
-        public Job(int jobId, Date jobStartDate, Park park) {
+        public Job(int jobId, Date jobStartDate, Date jobEndDate, Park park) {
 
                 lightVolunteers = new TreeSet<Volunteer>();
                 mediumVolunteers = new TreeSet<Volunteer>();
                 heavyVolunteers = new TreeSet<Volunteer>();
 
                 this.jobId = jobId;
+                this.jobStartDate = jobStartDate;
+                this.jobEndDate = jobEndDate;
                 this.park = park;
                 this.park.addJob(this);
         }
