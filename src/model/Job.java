@@ -51,8 +51,9 @@ public class Job implements Serializable, Comparable<Job> {
 
         /**
          * Instantiates a new job.
+         * @param jobendDate 
          */
-        public Job(int jobId, Date jobStartDate, Date jobEndDate, Park park) {
+        public Job(int jobId, Date jobStartDate, Date jobendDate, Park park) {
 
                 lightVolunteers = new TreeSet<Volunteer>();
                 mediumVolunteers = new TreeSet<Volunteer>();
