@@ -1,21 +1,21 @@
 package model;
 
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.TreeSet;
 
-/** Author: Leda Rezanejad **/
 
 /**
-* Job represents a job for a park.
-*/
+ * Job represents a job for a park.
+ * 
+ * @author Leda
+ */
 
 public class Job implements Serializable, Comparable<Job> {
 
-        /**
-	 * 
-	 */
-	private static final long serialVersionUID = 7064485507053168372L;
+    /**The constant serialVersionUID of the Job class. */
+	private static final long serialVersionUID = 5955364660377381327L;
 
 		private static final int MAX_ALLOWED_STARTDATE = 90;
 
@@ -51,7 +51,6 @@ public class Job implements Serializable, Comparable<Job> {
 
         /**
          * Instantiates a new job.
-         * @param jobendDate 
          */
         public Job(int jobId, Date jobStartDate, Date jobEndDate, Park park) {
 
@@ -155,32 +154,32 @@ public class Job implements Serializable, Comparable<Job> {
                 return jobEndDate;
         }
 
-         /**
-	 * Gets all light volunteers
-	 * 
-	 * @return the tree set of light volunteers
-	 */
-	public TreeSet<Volunteer> getLightVolunteers() {
-		return lightVolunteers;
-	}
+        /**
+         * Gets all light volunteers
+         *
+         * @return the tree set of light volunteers
+         */
+        public TreeSet<Volunteer> getLightVolunteers() {
+                return lightVolunteers;
+        }
 
-	/**
-	 * Gets all medium volunteers
-	 * 
-	 * @return the tree set of medium volunteers
-	 */
-	public TreeSet<Volunteer> getMediumVolunteers() {
-		return mediumVolunteers;
-	}
+        /**
+         * Gets all medium volunteers
+         *
+         * @return the tree set of medium volunteers
+         */
+        public TreeSet<Volunteer> getMediumVolunteers() {
+                return mediumVolunteers;
+        }
 
-	/**
-	 * Gets all heavy volunteers 
-	 * 
-	 * @return the tree set of heavy volunteers
-	 */
-	public TreeSet<Volunteer> getHeavyVolunteers() {
-		return heavyVolunteers;
-	}
+        /**
+         * Gets all heavy volunteers
+         *
+         * @return the tree set of heavy volunteers
+         */
+        public TreeSet<Volunteer> getHeavyVolunteers() {
+                return heavyVolunteers;
+        }
 
         /**
          * Gets the maximum number light volunteers.
@@ -366,6 +365,8 @@ public class Job implements Serializable, Comparable<Job> {
                 // checks if start date is not in the past and is not starting on more than 3 months in the future
 
                 Date currentDate = new Date();
+
+                //Constants
                 int daysBetweenCurrentAndStartDate = (int)((startDate.getTime() - currentDate.getTime())/(1000 * 60 * 60 * 24));
                 int daysBetweenStartAndEndDate = (int)((endDate.getTime() - startDate.getTime())/(1000 * 60 * 60 * 24));
 

@@ -1,7 +1,5 @@
 package model;
 
-
-
 import static org.junit.Assert.*;
 
 import java.awt.peer.LightweightPeer;
@@ -9,11 +7,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TreeSet;
-
-import model.Job;
-import model.Park;
-import model.ParkManager;
-import model.Volunteer;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -61,22 +54,13 @@ public class JobTest {
 	private String testEmail;
 	
 	/** Set of test light volunteers. */
-	private TreeSet<Volunteer> testLightVolunteersHasRoom;
-	
-	/** Set of test light volunteers. */
-	private TreeSet<Volunteer> testLightVolunteersFull;
+	private TreeSet<Volunteer> testLightVolunteers;
 	
 	/** Set of test medium volunteers. */
-	private TreeSet<Volunteer> testMediumVolunteersHasRoom;
-	
-	/** Set of test medium volunteers. */
-	private TreeSet<Volunteer> testMediumVolunteersFull;
+	private TreeSet<Volunteer> testMediumVolunteers;
 	
 	/** Set of test heavy volunteers. */
-	private TreeSet<Volunteer> testHeavyVolunteersHasRoom;
-	
-	/** Set of test heavy volunteers. */
-	private TreeSet<Volunteer> testHeavyVolunteersFull;
+	private TreeSet<Volunteer> testHeavyVolunteers;
 	
 	/** The test maximum number light volunteers. */
 	private int testJobMaxNumLightVolunteers;
@@ -104,103 +88,83 @@ public class JobTest {
 		
 		testParkManager = new ParkManager(testFirstName, testLastName, testEmail);
 		testPark = new Park(testParkId, testParkName, testParkManager);
-		testJob = new Job(testJobId, testJobStartDate, testPark);
+		testJob = new Job(testJobId, testJobStartDate, testJobEndDate, testPark);
 		
-		testJobMaxNumLightVolunteers = 4;
-		testJobMaxNumMediumVolunteers = 4;
-		testJobMaxNumHeavyVolunteers = 4;
+		testLightVolunteers = new TreeSet<Volunteer>();
+		testMediumVolunteers = new TreeSet<Volunteer>();
+		testHeavyVolunteers = new TreeSet<Volunteer>();
 		
-		testLightVolunteersHasRoom = new TreeSet<Volunteer>();
-		testLightVolunteersFull = new TreeSet<Volunteer>();
-		testMediumVolunteersHasRoom = new TreeSet<Volunteer>();
-		testMediumVolunteersFull = new TreeSet<Volunteer>();
-		testHeavyVolunteersHasRoom = new TreeSet<Volunteer>();
-		testHeavyVolunteersFull = new TreeSet<Volunteer>();
-		
-		
-//		Populate light volunteer has room
-		for (int i = 0; i < 1; i++) {
-			testVolunteer = new Volunteer("vFirstName" + i, "vLirstName" + i, "VolunteerEmail@" + i);
-			testLightVolunteersHasRoom.add(testVolunteer);
-		}
-		
-//		Populate light volunteer is full
-		for (int i = 0; i < 3; i++) {
-			testVolunteer = new Volunteer("vFirstName" + i, "vLirstName" + i, "VolunteerEmail@" + i);
-			testLightVolunteersFull.add(testVolunteer);
-		}
-		
-//		Populate medium volunteer has room
-		for (int i = 0; i < 1; i++) {
-			testVolunteer = new Volunteer("vFirstName" + i, "vLirstName" + i, "VolunteerEmail@" + i);
-			testMediumVolunteersHasRoom.add(testVolunteer);
-		}
-		
-//		Populate medium volunteer is full
-		for (int i = 0; i < 3; i++) {
-			testVolunteer = new Volunteer("vFirstName" + i, "vLirstName" + i, "VolunteerEmail@" + i);
-			testMediumVolunteersHasRoom.add(testVolunteer);
-		}
-		
-//		Populate heavy volunteer has room
-		for (int i = 0; i < 1; i++) {
-			testVolunteer = new Volunteer("vFirstName" + i, "vLirstName" + i, "VolunteerEmail@" + i);
-			testHeavyVolunteersHasRoom.add(testVolunteer);
-		}
-		
-//		Populate heavy volunteer is full
-		for (int i = 0; i < 3; i++) {
-			testVolunteer = new Volunteer("vFirstName" + i, "vLirstName" + i, "VolunteerEmail@" + i);
-			testHeavyVolunteersHasRoom.add(testVolunteer);
-		}
 	}
 	
 	@Test
 	public void testIsLightVolunteersFullHasRoom(){
 //		tests the class isLightVolunteersFull when it returns true
 		
-		TreeSet<Volunteer> lightVolunteers = testJob.getLightVolunteers();
-		assertEquals(testLightVolunteersHasRoom.size(), lightVolunteers.size());
+		testJobMaxNumLightVolunteers = 4;
 		
-		assertTrue(testJob.isLightVolunteersFull());
+//		Populate light volunteer has room
+		for (int i = 0; i <= 1; i++) {
+			testVolunteer = new Volunteer("vFirstName" + i, "vLirstName" + i, "VolunteerEmail@" + i);
+			testLightVolunteers.add(testVolunteer);
+			assertTrue(testJob.isLightVolunteersFull());
+		}
 	}
 	
 	@Test
 	public void testIsLightVolunteersFullIsFull(){
 //		tests the class isLightVolunteersFull when it returns false
 		
-		TreeSet<Volunteer> lightVolunteers = testJob.getLightVolunteers();
-		assertEquals(testLightVolunteersFull.size(), lightVolunteers.size());
+		testJobMaxNumLightVolunteers = 4;
 		
-		assertFalse(testJob.isLightVolunteersFull());
+//		testLightVolunteers = testJob.getLightVolunteers();
+		
+//		Populate light volunteer is full
+		for (int i = 0; i <= 3; i++) {
+			testVolunteer = new Volunteer("vFirstName" + i, "vLirstName" + i, "VolunteerEmail@" + i);
+			testLightVolunteers.add(testVolunteer);
+			assertTrue(testJob.isLightVolunteersFull());
+		}
 	}
 	
 	@Test
 	public void testIsMediumVolunteersFullHasRoom(){
 //		tests the class isMediumVolunteersFull when it returns true
 		
-		TreeSet<Volunteer> mediumVolunteers = testJob.getMediumVolunteers();
-		assertEquals(testMediumVolunteersHasRoom.size(), mediumVolunteers.size());
+		testJobMaxNumMediumVolunteers = 4;
 		
-		assertTrue(testJob.isMediumVolunteersFull());
+//		Populate medium volunteer has room
+		for (int i = 0; i <= 1; i++) {
+			testVolunteer = new Volunteer("vFirstName" + i, "vLirstName" + i, "VolunteerEmail@" + i);
+			testMediumVolunteers.add(testVolunteer);
+			assertTrue(testJob.isMediumVolunteersFull());
+		}
 	}
 	
 	@Test
 	public void testIsMediumVolunteersFullIsFull(){
 //		tests the class isMediumVolunteersFull when it returns false
 		
-		TreeSet<Volunteer> mediumVolunteers = testJob.getMediumVolunteers();
-		assertEquals(testMediumVolunteersFull.size(), mediumVolunteers.size());
+		testJobMaxNumMediumVolunteers = 4; 
 		
-		assertFalse(testJob.isMediumVolunteersFull());
+//		Populate medium volunteer is full
+		for (int i = 0; i <= 3; i++) {
+			testVolunteer = new Volunteer("vFirstName" + i, "vLirstName" + i, "VolunteerEmail@" + i);
+			testMediumVolunteers.add(testVolunteer);
+			assertTrue(testJob.isMediumVolunteersFull());
+		}
 	}
 	
 	@Test
 	public void testIsHeavyVolunteersFullHasRoom(){
 //		tests the class isHeavyVolunteersFull when it returns true
 		
-		TreeSet<Volunteer> heavyVolunteers = testJob.getHeavyVolunteers();
-		assertEquals(testHeavyVolunteersHasRoom.size(), heavyVolunteers.size());
+		testJobMaxNumHeavyVolunteers = 4; 
+		
+//		Populate heavy volunteer has room
+		for (int i = 0; i <= 1; i++) {
+			testVolunteer = new Volunteer("vFirstName" + i, "vLirstName" + i, "VolunteerEmail@" + i);
+			testHeavyVolunteers.add(testVolunteer);
+		}
 		
 		assertTrue(testJob.isHeavyVolunteersFull());
 	}
@@ -209,29 +173,33 @@ public class JobTest {
 	public void testIsHeavyVolunteersFullIsFull(){
 //		tests the class isHeavyVolunteersFull when it returns false
 		
-		TreeSet<Volunteer> heavyVolunteers = testJob.getHeavyVolunteers();
-		assertEquals(testHeavyVolunteersFull.size(), heavyVolunteers.size());
+		testJobMaxNumHeavyVolunteers = 4; 
 		
-		assertFalse(testJob.isHeavyVolunteersFull());
+//		Populate heavy volunteer is full
+		for (int i = 0; i <= 3; i++) {
+			testVolunteer = new Volunteer("vFirstName" + i, "vLirstName" + i, "VolunteerEmail@" + i);
+			testHeavyVolunteers.add(testVolunteer);
+			assertTrue(testJob.isHeavyVolunteersFull());
+		}
 	}
 	
 	@Test
 	public void testAddLightVolunteer(){
-		for(Volunteer volunteer : testLightVolunteersFull){
+		for(Volunteer volunteer : testLightVolunteers){
 			assertTrue(testJob.addLightVolunteer(volunteer));
 		}
 	}
 	
 	@Test
 	public void testAddMediumVolunteer(){
-		for(Volunteer volunteer : testMediumVolunteersFull){
+		for(Volunteer volunteer : testMediumVolunteers){
 			assertTrue(testJob.addMediumVolunteer(volunteer));
 		}
 	}
 
 	@Test
 	public void testAddHeavyVolunteer(){
-		for(Volunteer volunteer : testHeavyVolunteersFull){
+		for(Volunteer volunteer : testHeavyVolunteers){
 			assertTrue(testJob.addHeavyVolunteer(volunteer));
 		}
 	}
@@ -239,16 +207,13 @@ public class JobTest {
 	@Test
 	public void testIsJobScheduleValidIsWithinBounds() throws Exception{
 //		Checks dates that meet the required business rules
-		boolean ans = true;
+		boolean ans = false;
 		boolean val;
 		
-		Date startDate = testJob.getStartDate();
-		Date endDate = testJob.getEndDate();
-		
 		testJobStartDate = format.parse("05/30/15");
-		testJobEndDate = format.parse("05/06/15");
+		testJobEndDate = format.parse("05/30/15");
 		
-		val = testJob.isJobScheduleValid(testJobStartDate, testJobEndDate);
+		val = Job.isJobScheduleValid(testJobStartDate, testJobEndDate);
 		assertEquals(ans, val);
 	}
 	
@@ -258,13 +223,10 @@ public class JobTest {
 		boolean ans = false;
 		boolean val;
 		
-		Date startDate = testJob.getStartDate();
-		Date endDate = testJob.getEndDate();
-		
 		testJobStartDate = format.parse("07/30/15");
-		testJobEndDate = format.parse("08/06/15");
+		testJobEndDate = format.parse("08/13/15");
 		
-		val = testJob.isJobScheduleValid(testJobStartDate, testJobEndDate);
+		val = Job.isJobScheduleValid(testJobStartDate, testJobEndDate);
 		assertEquals(ans, val);
 	}
 	
