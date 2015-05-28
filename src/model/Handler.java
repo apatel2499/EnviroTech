@@ -63,8 +63,6 @@ public class Handler implements Serializable {
 		// Else If User is a Volunteer:
 		else if (user instanceof Volunteer)
 			volunteers.put(user.getEmailAddress(), (Volunteer) user);
-		else
-			System.out.println("Unrecognized role type or null, nothing added.");
 			
 	}
 
