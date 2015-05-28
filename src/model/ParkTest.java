@@ -49,7 +49,7 @@ public class ParkTest {
 		
 		Park park = new Park(parkId, parkName, parkManager);
 		Date date = new Date();
-		Job job = new Job(0, date, park);
+		Job job = new Job(0, date, date, park);
 
 		assertEquals(1, park.getJobs().size());
 	}
