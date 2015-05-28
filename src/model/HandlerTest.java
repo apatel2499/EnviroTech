@@ -80,16 +80,16 @@ public class HandlerTest {
 		// test when there are one job
 		Park tempPark = new Park(0, "park a", pm);
 		Date tempDate = new Date(System.currentTimeMillis());
-		Job tempJob = new Job(0, tempDate, tempPark);
+		Job tempJob = new Job(0, tempDate, tempDate, tempPark);
 		pm.addPark(tempPark);
 		handler.addUser(pm);
 		assertEquals(1, handler.getAllJobs().size());
 		
 		// test when there are three jobs
-		Job tempJob2 = new Job(1, tempDate, tempPark);
+		Job tempJob2 = new Job(1, tempDate, tempDate, tempPark);
 		Park tempPark2 = new Park(1, "park b", pm);		// create another park 
 		pm.addPark(tempPark2);
-		Job tempJob3 = new Job(2, tempDate, tempPark2);		// add a job to park 2
+		Job tempJob3 = new Job(2, tempDate, tempDate, tempPark2);		// add a job to park 2
 		assertEquals(3, handler.getAllJobs().size());
 		
 	}
@@ -103,14 +103,14 @@ public class HandlerTest {
 		// test when there is one job but the job's start date is not in the future
 		Park tempPark = new Park(0, "park a", pm);
 		Date tempDate = new Date(System.currentTimeMillis());
-		Job tempJob = new Job(0, tempDate, tempPark);
+		Job tempJob = new Job(0, tempDate, tempDate, tempPark);
 		pm.addPark(tempPark);
 		handler.addUser(pm);
 		assertEquals(0, handler.getUpcomingJobs().size());
 
 		// test when there is a job in the future
 		tempDate = new Date(System.currentTimeMillis() + 1000*60*60*24);
-		Job tempJob2 = new Job(1, tempDate, tempPark);
+		Job tempJob2 = new Job(1, tempDate, tempDate, tempPark);
 		assertEquals(1, handler.getUpcomingJobs().size());
 	
 	}
