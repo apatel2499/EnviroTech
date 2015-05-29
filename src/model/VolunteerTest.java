@@ -15,6 +15,7 @@ import org.junit.Test;
 
 public class VolunteerTest {
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testAddJob() {
 		
@@ -25,6 +26,7 @@ public class VolunteerTest {
 		assertTrue(person.addJob(job));
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testAddJobFails() {
 		
@@ -36,6 +38,7 @@ public class VolunteerTest {
 		assertFalse(person.addJob(job));
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testGetJobs() {
 		
@@ -47,6 +50,7 @@ public class VolunteerTest {
 		assertTrue(person.getJobs().size() > 0);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testCanSignUpForJob() {
 		
@@ -56,7 +60,8 @@ public class VolunteerTest {
 		Job job = new Job(0, new Date(115, 5, 1), new Date(115, 5, 1), park);
 		assertTrue(person.canSignUpForJob(job));
 	}
-
+	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testDateInThePast() {
 		
@@ -67,6 +72,7 @@ public class VolunteerTest {
 		assertFalse(person.canSignUpForJob(job));
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testDateConflict() {
 		
