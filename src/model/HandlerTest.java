@@ -1,10 +1,7 @@
 package model;
 
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.util.Date;
 
@@ -70,10 +67,65 @@ public class HandlerTest {
 		assertTrue(!handler.getParkManagers().containsValue(null));
 		assertTrue(!handler.getVolunteers().containsValue(null));
 	}
+	
+	@Test
+	public void testGetNextParkIdAvailable() {
+		handler.addUser(pm);
+		
+		// test when there's no park
+		assertEquals(0, handler.getNextParkIdAvailable());
+		
+		// test when there is one park
+		new Park(0, "park a", pm);
+		assertEquals(1, handler.getNextParkIdAvailable());
+		
+		// test when there are three parks
+		new Park(1, "park b", pm);
+		new Park(100, "park c", pm);
+		assertEquals(101, handler.getNextParkIdAvailable());
+	}
+	
+	@Test
+	public void testGetNextJobIdAvailable() {
+		handler.addUser(pm);
+
+		// test when there's no job
+		assertEquals(0, handler.getNextJobIdAvailable());
+		
+		// test when there is one job
+		Park tempPark = new Park(0, "park a", pm);
+		Date tempDate = new Date(System.currentTimeMillis());
+		new Job(0, tempDate, tempDate, tempPark);
+		assertEquals(1, handler.getNextJobIdAvailable());
+		
+		// test when there are three jobs
+		new Job(1, tempDate, tempDate, tempPark);
+		Park tempPark2 = new Park(1, "park b", pm);		// create another park 
+		new Job(5, tempDate, tempDate, tempPark2);		// add a job to park 2
+		assertEquals(6, handler.getNextJobIdAvailable());
+	}
+	
+	@Test
+	public void testGetAllParks() {
+		handler.addUser(pm);
+		
+		// test when there's no park
+		assertEquals(0, handler.getAllParks().size());
+		
+		// test when there is one park
+		new Park(0, "park a", pm);
+		assertEquals(1, handler.getAllParks().size());
+		
+		// test when there are three parks
+		new Park(1, "park b", pm);
+		new Park(2, "park c", pm);
+		assertEquals(3, handler.getAllParks().size());
+		
+	}
 
 	@Test
 	public void testGetAllJobs() {
-
+		
 		// test when there's no job
 		assertEquals(0, handler.getAllJobs().size());
 		

@@ -97,6 +97,15 @@ public class Park implements Serializable, Comparable<Park> {
 
 		return false;
 	}
+	
+	/**
+	 * Gets the park id.
+	 *
+	 * @return the park id
+	 */
+	public int getParkId() {
+		return parkId;
+	}
 
 	/**
 	 * Gets the jobs.
@@ -140,13 +149,15 @@ public class Park implements Serializable, Comparable<Park> {
 		// compare by park name so any treeset collection of parks are sorted by
 		// park name
 		// if (this.parkName.equals(o.parkName)) return 0;
-		if (this.equals(o))
+		/*if (this.equals(o))
 			return 0;
 		else if (this.parkName.hashCode() > o.parkName.hashCode())
 			return 1;
 		else
-			return -1;
-
+			return -1;*/
+		
+		// compare by park id instead
+		return parkId - o.parkId;
 	}
 
 }

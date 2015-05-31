@@ -14,7 +14,7 @@ public class UserTest {
 		
 		User user = new Volunteer("Jane", "Doe", "janedoe@gmail.com");
 		User otherUser = new Volunteer("John", "Doe", "johndoe@gmail.com");
-		assertEquals(user.getFirstName().compareTo(otherUser.getFirstName()), user.compareTo(otherUser));
+		assertEquals(user.getEmailAddress().compareTo(otherUser.getEmailAddress()), user.compareTo(otherUser));
 	}
 
 }

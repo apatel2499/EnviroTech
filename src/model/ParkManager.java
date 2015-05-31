@@ -1,6 +1,7 @@
 package model;
 
 
+import java.util.Date;
 import java.util.TreeSet;
 
 /**
@@ -53,6 +54,24 @@ public class ParkManager extends User {
 	 */
 	public TreeSet<Park> getParks() {
 		return parks;
+	}
+	
+	/**
+	 * Gets all the upcoming jobs from all the parks managed by the park manager.
+	 *
+	 * @return all the upcoming jobs from all the parks managed by the park manager
+	 */
+	public TreeSet<Job> getAllUpcomingJobs() {
+		TreeSet<Job> allUpcomingJobs = new TreeSet<Job>();
+		Date today = new Date();
+		for (Park park : parks) {
+			for (Job job : park.getJobs()) {
+				if (today.before(job.getStartDate())) {
+					allUpcomingJobs.add(job);
+				}
+			}
+		}
+		return allUpcomingJobs;
 	}
 	
 }

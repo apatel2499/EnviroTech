@@ -10,8 +10,10 @@ import org.junit.runners.Suite;
  * @author Ankit
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ AdministratorTest.class, HandlerTest.class, VolunteerTest.class, ParkManagerTest.class, 
-	JobTest.class, UserTest.class, ParkTest.class })
+@Suite.SuiteClasses({ AdministratorTest.class, HandlerTest.class, VolunteerTest.class, 
+	ParkManagerTest.class, JobTest.class, UserTest.class, ParkTest.class , 
+	JobComparatorByDateTest.class, ParkComparatorByNameTest.class, 
+	UserComparatorByNameTest.class, DateUtilTest.class})
 
 public class RunAllTest {
 

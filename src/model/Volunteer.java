@@ -5,22 +5,36 @@ import java.util.TreeSet;
 
 /**
  * The concrete implementation for a Volunteer.
+ * 
+ * @author Katie
  */
 
-@SuppressWarnings("serial")
 public class Volunteer extends User {
 	
-	/** The jobs the volunteer has volunteered to. */
-	private TreeSet<Job> jobs;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7798736071695713562L;
+	
+	/** The jobs the volunteer has volunteered to as a light volunteer. */
+	private TreeSet<Job> lightJobs;
+	
+	/** The jobs the volunteer has volunteered to as a medium volunteer. */
+	private TreeSet<Job> mediumJobs;
+	
+	/** The jobs the volunteer has volunteered to as a heavy volunteer. */
+	private TreeSet<Job> heavyJobs;
 	
 	/**
 	 * Instantiates a new volunteer without any attributes.
 	 */
 	public Volunteer() {
 		// call super()
-		// instantiate the tree set of jobs
+		// instantiate the tree sets of jobs
 		super();
-		jobs = new TreeSet<Job>();
+		lightJobs = new TreeSet<Job>();
+		mediumJobs = new TreeSet<Job>();
+		heavyJobs = new TreeSet<Job>();
 	}
 	
 	/**
@@ -32,31 +46,86 @@ public class Volunteer extends User {
 	 */
 	public Volunteer(String firstName, String lastName, String emailAddress) {
 		// call super(firstName, lastName, emailAddress)
-		// instantiate the tree set of jobs
+		// instantiate the tree sets of jobs
 		super(firstName, lastName, emailAddress);
-		jobs = new TreeSet<Job>();
-		
+		lightJobs = new TreeSet<Job>();
+		mediumJobs = new TreeSet<Job>();
+		heavyJobs = new TreeSet<Job>();
 	}
 
 	/**
-	 * Adds the job to the set of jobs the volunteer volunteered to.
+	 * Adds the job to the set of jobs the volunteer volunteered to as a light volunteer.
 	 *
 	 * @param job the job to add
 	 * @return true if the job has been added, false otherwise
 	 */
-	public boolean addJob(Job job) {
-		// add job to jobs then return result
-		return jobs.add(job);
+	public boolean addLightJob(Job job) {
+		// add job then return result
+		if (canSignUpForJob(job)) {
+			return lightJobs.add(job);
+		}
+		
+		return false;
 	}
 	
 	/**
-	 * Gets the jobs the volunteer volunteered to.
+	 * Adds the job to the set of jobs the volunteer volunteered to as a medium volunteer.
 	 *
-	 * @return the jobs the volunteer volunteered to
+	 * @param job the job to add
+	 * @return true if the job has been added, false otherwise
 	 */
-	public TreeSet<Job> getJobs() {
+	public boolean addMediumJob(Job job) {
+		// add job then return result
+		if (canSignUpForJob(job)) {
+			return mediumJobs.add(job);
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * Adds the job to the set of jobs the volunteer volunteered to as a heavy volunteer.
+	 *
+	 * @param job the job to add
+	 * @return true if the job has been added, false otherwise
+	 */
+	public boolean addHeavyJob(Job job) {
+		// add job then return result
+		if (canSignUpForJob(job)) {
+			return heavyJobs.add(job);
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * Gets the jobs the volunteer volunteered to as a light volunteer.
+	 *
+	 * @return the jobs the volunteer volunteered to as a light volunteer
+	 */
+	public TreeSet<Job> getLightJobs() {
 		// return jobs
-		return jobs;
+		return lightJobs;
+	}
+	
+	/**
+	 * Gets the jobs the volunteer volunteered to as a medium volunteer.
+	 *
+	 * @return the jobs the volunteer volunteered to as a medium volunteer
+	 */
+	public TreeSet<Job> getMediumJobs() {
+		// return jobs
+		return mediumJobs;
+	}
+	
+	/**
+	 * Gets the jobs the volunteer volunteered to as a heavy volunteer.
+	 *
+	 * @return the jobs the volunteer volunteered to as a heavy volunteer
+	 */
+	public TreeSet<Job> getHeavyJobs() {
+		// return jobs
+		return heavyJobs;
 	}
 	
 	/**
@@ -85,13 +154,18 @@ public class Volunteer extends User {
 			flag = false;
 		}
 		
-		for(Job temp: jobs) {
-			if(temp.getStartDate().equals(job.getStartDate())
-					|| temp.getEndDate().equals(job.getStartDate())) {
+		TreeSet<Job> allJobs = new TreeSet<Job>(lightJobs);
+		allJobs.addAll(mediumJobs);
+		allJobs.addAll(heavyJobs);
+		for(Job temp: allJobs) {
+			if(DateUtil.dateEqualsIgnoreTime(temp.getStartDate(), job.getStartDate())
+					|| DateUtil.dateEqualsIgnoreTime(temp.getEndDate(), job.getStartDate())
+					|| DateUtil.dateEqualsIgnoreTime(temp.getStartDate(), job.getEndDate())
+					|| DateUtil.dateEqualsIgnoreTime(temp.getEndDate(), job.getEndDate())) {
 				flag = false;
 			}
-					
 		}
+
 		return flag;
 	}
 

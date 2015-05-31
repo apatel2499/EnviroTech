@@ -8,9 +8,13 @@ import java.io.Serializable;
 /**
  * The abstract class for all types of users.
  */
-@SuppressWarnings("serial")
 public abstract class User implements Serializable, Comparable<User> {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5431874612400360264L;
+
 	/** The user's first name. */
 	private String firstName;
 	
@@ -37,7 +41,7 @@ public abstract class User implements Serializable, Comparable<User> {
 		// set the attributes
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.emailAddress = emailAddress;
+		this.emailAddress = emailAddress.toLowerCase();
 	}
 
 	/**
@@ -67,7 +71,7 @@ public abstract class User implements Serializable, Comparable<User> {
 	 */
 	public void setEmailAddress(String emailAddress) {
 		// set email
-		this.emailAddress = emailAddress;
+		this.emailAddress = emailAddress.toLowerCase();
 	}
 
 	/**
@@ -137,14 +141,17 @@ public abstract class User implements Serializable, Comparable<User> {
 		//		Return this.firstName.compareTo(other.firstName)
 		// Else:
 		//		Return this.emailAddress.compareTo(other.emailAddress)
-		
+		/*
 		if(!this.lastName.equals(other.lastName)) {
 			return this.lastName.compareTo(other.lastName);
-		} else if(this.firstName.equals(other.firstName)) {
+		} else if(!this.firstName.equals(other.firstName)) {
 			return this.firstName.compareTo(other.firstName);
 		} else {
 			return this.emailAddress.compareTo(other.emailAddress);
-		}
+		}*/
+		
+		// compare by email address only instead
+		return this.emailAddress.compareTo(other.emailAddress);
 	}
 	
 }

@@ -2,8 +2,6 @@ package model;
 
 import static org.junit.Assert.*;
 
-import java.awt.peer.LightweightPeer;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TreeSet;
@@ -23,6 +21,9 @@ public class JobTest {
 	
 	/** The test volunteer class. */
 	private Volunteer testVolunteer;
+	
+	/** The test job name. */
+	private String testJobName; 
 	
 	/** The test park class. */
 	private Park testPark;
@@ -80,6 +81,7 @@ public class JobTest {
 		testEmail = "ledarezanejad@parkmanager.com";
 		
 		testJobId = 1;
+		testJobName = "Clean Park";
 		testParkId = 1;
 		
 		testParkName = "Rainier";
@@ -89,6 +91,7 @@ public class JobTest {
 		testParkManager = new ParkManager(testFirstName, testLastName, testEmail);
 		testPark = new Park(testParkId, testParkName, testParkManager);
 		testJob = new Job(testJobId, testJobStartDate, testJobEndDate, testPark);
+		testJob.setJobName(testJobName);
 		
 		testLightVolunteers = new TreeSet<Volunteer>();
 		testMediumVolunteers = new TreeSet<Volunteer>();

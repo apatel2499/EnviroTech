@@ -3,6 +3,9 @@ package model;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -118,6 +121,36 @@ public class ParkManagerTest {
 		// all parks in the sample parks must be found in the retrieved set of parks
 		for (Park park : testSampleParks) {
 			assertTrue(parks.contains(park));
+		}
+	}
+	
+	/**
+	 * Test getAllUpcomingJobs method.
+	 */
+	@Test
+	public void testGetAllUpcomingJobs() {
+		// prepare some test dates
+		Calendar calendar = new GregorianCalendar();
+		Date today = calendar.getTime();
+		calendar.add(Calendar.DATE, -5);
+		Date pastDate = calendar.getTime();
+		calendar.add(Calendar.DATE, 10);
+		Date futureDate = calendar.getTime();
+		
+		// add jobs to different parks
+		int jobId = 0;
+		List<Job> futureJobsAdded = new ArrayList<Job>(testSampleParks.size());
+		for (Park park : testParkManager.getParks()) {
+			new Job(jobId++, today, today, park);
+			new Job(jobId++, pastDate, pastDate, park);
+			futureJobsAdded.add(new Job(jobId++, futureDate, futureDate, park));
+		}
+		
+		// check get all upcoming jobs
+		TreeSet<Job> allUpcomingJobs = testParkManager.getAllUpcomingJobs();
+		assertEquals(futureJobsAdded.size(), allUpcomingJobs.size());
+		for (Job job : futureJobsAdded) {
+			assertTrue(allUpcomingJobs.contains(job));
 		}
 	}
 
