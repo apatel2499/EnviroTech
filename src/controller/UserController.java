@@ -4,7 +4,7 @@ package controller;
  * The UserController is the interface for all controllers for the different views
  * of the the different users.
  * 
- * @author Ankit
+ * @author Katie
  */
 public interface UserController {
 	

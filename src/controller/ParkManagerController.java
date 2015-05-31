@@ -18,7 +18,7 @@ import view.ParkManagerView;
  * The ParkManagerController is the controller responsible for handling
  * user interactions with a Park Manager user.
  * 
- * @author Ankit
+ * @author qiyuan
  */
 public class ParkManagerController implements UserController {
 	

@@ -13,6 +13,8 @@ import view.DataView;
 
 /**
  * The DataController is the controller used for loading and saving data.
+ * 
+ * @author Leda
  */
 public class DataController {
 	
